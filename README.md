@@ -6,5 +6,4 @@ Cerebral palsy (CP) is a leading cause of physical disability in children, with 
 
 **Keywords**: Cerebral palsy, Lower limb motion analysis, Imbalance classification, Gait trajectory, Gait phase
 
-The followng figure illustrates the structure of our proposed method.
 <img width="470" alt="image" src="https://github.com/user-attachments/assets/1aee4b11-cf0f-4f29-9a2d-103e209b37a3" />
