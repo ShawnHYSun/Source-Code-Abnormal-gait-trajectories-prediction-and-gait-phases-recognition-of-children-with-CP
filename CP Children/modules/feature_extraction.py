@@ -24,8 +24,16 @@ def mlp_branch():
     return mlp
 
 def build_feature_extractor():
-    # Concatenate both branches
-    merged = concatenate([cnn_lstm_branch(), mlp_branch()])
+    # Get CNN-LSTM and MLP branches
+    cnn_lstm_output = cnn_lstm_branch()
+    mlp_output = mlp_branch()
+
+    # Ensure that the CNN-LSTM output has the same number of time steps as the MLP output
+    # Reshape MLP output to match the time dimension (batch_size, time_steps, features)
+    mlp_reshaped = RepeatVector(K.int_shape(cnn_lstm_output)[1])(mlp_output)
+
+    # Concatenate both branches along the time step axis (axis=1)
+    merged = concatenate([cnn_lstm_output, mlp_reshaped], axis=-1)
 
     # Attention layer
     attention = Dense(1, activation='sigmoid', name='attention_vec')(merged)
