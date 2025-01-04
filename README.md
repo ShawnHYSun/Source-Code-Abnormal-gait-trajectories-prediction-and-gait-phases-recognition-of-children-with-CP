@@ -1,4 +1,4 @@
-If there is any question, please feel free to contact the author at haoyuansun@cuhk.edu.hk
+If there is any question, please contact the author at haoyuansun@cuhk.edu.hk
 
 # Abnormal gait trajectories prediction and gait phases recognition of children with cerebral palsy based on deep learning: A pilot study
 ## Abstract:
@@ -7,6 +7,7 @@ Cerebral palsy (CP) is a leading cause of physical disability in children, with 
 ## Keywords:
 Cerebral palsy, Lower limb motion analysis, Imbalance classification, Gait trajectory, Gait phase
 
+## Schematic diagram of the proposed method
 <p align="center"> 
 <img width="470" alt="image" src="https://github.com/user-attachments/assets/1aee4b11-cf0f-4f29-9a2d-103e209b37a3" />
 </p>
