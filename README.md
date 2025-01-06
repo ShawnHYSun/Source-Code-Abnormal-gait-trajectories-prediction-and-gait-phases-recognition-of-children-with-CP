@@ -9,5 +9,15 @@ Cerebral palsy, Lower limb motion analysis, Imbalance classification, Gait traje
 
 ## Schematic diagram of the proposed method
 <p align="center"> 
-<img width="470" alt="image" src="https://github.com/user-attachments/assets/1aee4b11-cf0f-4f29-9a2d-103e209b37a3" />
+<img width="570" alt="image" src="https://github.com/user-attachments/assets/1aee4b11-cf0f-4f29-9a2d-103e209b37a3" />
 </p>
+
+## Install
+```
+pip install requirements.txt
+```
+
+## Usage
+```
+python main.py
+```
