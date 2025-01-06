@@ -13,5 +13,5 @@ loss_prediction = 'mse'
 # Dataset
 input_file = 'path_to_input_file.csv'
 output_file = 'path_to_output_file.csv'
-target_count = 40000  # Target number of time steps in the augmented dataset
+target_count = 50000  # Target number of time steps in the augmented dataset. 50000 is just an example.
 split_type = 'intra'  # 'intra' or 'inter'
