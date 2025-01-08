@@ -42,8 +42,8 @@ def assign_labels_to_gait_phases(data):
 
     # Iterate through the dataset to assign labels
     for _, row in data.iterrows():
-        a = row['knee_angle']  # Adjust based on your column name
-        b = row['hip_angle']  # Adjust based on your column name
+        a = row['knee_angle']
+        b = row['hip_angle']
 
         if a_max1 > a >= a_min and b > b_max:
             labels.append('KF')  # Knees start contact, hip angle greater than threshold
@@ -92,6 +92,7 @@ def compute_label_proportions(data):
 
 # Function for Intra or Inter subject data splitting
 def split_data(data, split_type='intra'):
+    # Intra-subject scenario: The data for each subject is pooled, with 80% used for training and the remaining 20% used for testing on each subject individually.
     if split_type == 'intra':
         subject_ids = data['subject_id'].unique()
         train_data = pd.DataFrame()
@@ -105,6 +106,7 @@ def split_data(data, split_type='intra'):
 
         return train_data, test_data
 
+    # Inter-subject scenario: The data from all subjects, except one (using the leave-one-out method), is pooled for training, and the remaining subject is used for testing.
     elif split_type == 'inter':
         subject_ids = data['subject_id'].unique()
 
