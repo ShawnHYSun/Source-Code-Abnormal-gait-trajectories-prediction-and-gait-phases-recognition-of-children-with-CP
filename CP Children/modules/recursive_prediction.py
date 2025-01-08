@@ -32,9 +32,6 @@ class R2ScoreCallback(Callback):
 # Train the model with the custom callback
 r2_callback = R2ScoreCallback()
 
-# Train the model with the custom callback
-r2_callback = R2ScoreCallback()
-
 
 # Recursive Prediction Function
 def recursive_predict_with_ekf(model, X_input, n_steps, ekf_params):
@@ -83,7 +80,7 @@ def recursive_predict_with_ekf(model, X_input, n_steps, ekf_params):
 
         P_pred = np.dot(F, np.dot(P, F.T)) + Q
 
-        # Step 3: EKF Update
+        # EKF Update
         z = pred  # The model's raw prediction serves as the observation
         if callable(H):
             y = z - H(x_pred)  # Innovation
@@ -97,10 +94,10 @@ def recursive_predict_with_ekf(model, X_input, n_steps, ekf_params):
         x_est = x_pred + np.dot(K, y)  # Corrected state estimate
         P = P_pred - np.dot(K, np.dot(H_jacobian, P_pred))  # Update error covariance
 
-        # Step 4: Append corrected prediction
+        # Append corrected prediction
         predictions.append(x_est)
 
-        # Step 5: Update input sequence for next prediction
+        # Update input sequence for next prediction
         input_seq_cnn = np.roll(input_seq_cnn, shift=-1, axis=1)
         input_seq_cnn[0, -1, 0] = x_est  # Update with EKF-corrected prediction
         input_seq_mlp = input_seq_cnn.reshape(1, -1)  # Flatten for MLP input
@@ -121,7 +118,7 @@ ekf_params = {
     'F': np.array([[1]]),  # State transition matrix
     'H': np.array([[1]]),  # Observation matrix
     'Q': np.array([[0.05]]),  # Process noise covariance
-    'R': np.array([[0.15]]),  # Measurement noise covariance
+    'R': np.array([[0.125]]),  # Measurement noise covariance
     'P': np.array([[1]]),  # Initial error covariance
 }
 
@@ -144,7 +141,8 @@ def build_recursive_predictor():
     ensemble_model.summary()
 
     # Train the model
-    history = ensemble_model.fit([X_train_cnn, X_train_mlp], normalize_train_data, epochs=config.epoch, batch_size=256, shuffle=False,
+    history = ensemble_model.fit([X_train_cnn, X_train_mlp], normalize_train_data, epochs=config.epoch, 
+                                 batch_size=config.batch_size, shuffle=False,
                                  validation_data=([X_test_cnn, X_test_mlp], normalize_test_data),
                                  callbacks=[r2_callback])
 
