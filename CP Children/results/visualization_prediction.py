@@ -100,6 +100,8 @@ def plot_results_prediction():
     # Combine the legends from both axes
     handles1, labels1 = ax1.get_legend_handles_labels()
     handles2, labels2 = ax2.get_legend_handles_labels()
+    plt.legend()
+    plt.show()
 
     # Print the results
     print(f'Test MAE: {test_mae:.2f}')
