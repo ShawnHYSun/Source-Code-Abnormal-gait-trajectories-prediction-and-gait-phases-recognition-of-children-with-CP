@@ -1,4 +1,6 @@
+```
 If there is any question, please contact the author at haoyuansun@cuhk.edu.hk
+```
 
 # Abnormal gait trajectories prediction and gait phases recognition of children with cerebral palsy based on deep learning: A pilot study
 ## Abstract:
